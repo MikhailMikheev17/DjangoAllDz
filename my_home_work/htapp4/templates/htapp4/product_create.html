@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Update create{% endblock %}
+{% block content %}
+{% if success_message %}
+<div class="alert alert-success" role="alert">
+    {{ success_message }}
+</div>
+{% endif %}
+<h3>Create product</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <input type="submit" value="create new  product">
+</form>
+{% endblock %}
+
+

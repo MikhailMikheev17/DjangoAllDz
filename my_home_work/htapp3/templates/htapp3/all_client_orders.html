@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}All orders of {{client.name}}{% endblock %}
+{% block content %}
+{% if not unique %}
+<h2>All orders of {{client.name}} {% if period %} within {{period}} days {% endif %}</h2>
+{% for order in orders %}
+<div>
+    <h3>Order {{ order.id }}, date: {{ order.date_ordered }}</h3>
+    <ul>
+        {% for product in order.products.all %}
+        <li>{{ product.name }} - {{ product.price }}, USD</li>
+        {% endfor %}
+        <h4>Total amount: {{ order.total_amount }}, USD</h4>
+    </ul>
+</div>
+{% endfor %}
+{% else %}
+<h2>List of unique products {% if period %} within {{period}} days {% endif %}:</h2>
+<ul>
+    {% for product in products %}
+    <li>{{ product.name }} - {{ product.price }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

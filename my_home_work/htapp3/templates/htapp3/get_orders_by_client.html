@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Get orders by client{% endblock %}
+{% block content %}
+<h3>Get Orders By Client</h3>
+    <form method="post">
+        {% csrf_token %}
+        <label for="client_id">Enter Client ID:</label>
+        <input type="text" id="client_id" name="client_id" required>
+        <br>
+        <p>you may  choose period, as well as get only unique products</p>
+        <input type="radio" id="7days" name="period" value="7">
+        <label for="7days">Orders for the last 7 days</label><br>
+        <input type="radio" id="30days" name="period" value="30">
+        <label for="30days">Orders for the last 30 days</label><br>
+        <input type="radio" id="365days" name="period" value="365">
+        <label for="365days">Orders for the last 365 days</label><br>
+         <input type="checkbox" id="unique" name="unique" value="True">
+        <label for="unique">Show only unique products</label><br>
+        <button type="submit">Get Orders</button>
+    </form>
+{% endblock %}
+
+

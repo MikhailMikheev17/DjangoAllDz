@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}update product{% endblock %}
+{% block content %}
+<h3>List of all products</h3>
+<ul>
+    {% for product in products %}
+    <li>ID: {{ product.pk }} - product: {{ product.name }} - price: {{ product.price }} --photo: {{ product.photo }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
